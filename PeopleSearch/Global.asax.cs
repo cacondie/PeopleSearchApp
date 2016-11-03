@@ -21,8 +21,8 @@ namespace PeopleSearch
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EntityContext, PeopleSearch.DataLayer.Migrations.Configuration>());
-           // Database.SetInitializer(new MyInitialization());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<EntityContext, PeopleSearch.DataLayer.Migrations.Configuration>());
+            Database.SetInitializer(new MyInitialization());
         }
 
     }
