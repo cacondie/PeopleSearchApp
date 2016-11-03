@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PeopleSearch.Repository.Person>
+
+
+<div id="personList">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>Interests</th>
+                <th>Picture</th>
+            </tr>
+    
+            @foreach (var person in Model)
+            {
+                string ImgSrc=person.FullName;
+                if (person.Pictures.Count > 0)
+                { ImgSrc = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(person.Pictures.FirstOrDefault().Image)); }
+
+                <tr>
+                    <td>@person.FullName</td>
+                    <td>@person.Addresses.FirstOrDefault()</td>
+                    <td>@person.Age</td>
+                    <td>
+                        <ul>
+                            @foreach(var interest in person.Interests)
+                            {
+                                <li>@interest.InterestName</li>
+                            }
+                        </ul>
+                    </td>
+                    <td><img src="@ImgSrc"/></td>
+                </tr>
+            }
+        </table>
+</div>

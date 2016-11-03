@@ -1,5 +1,9 @@
-﻿using System;
+﻿using PeopleSearch.DataLayer;
+using PeopleSearch.DataLayer.Migrations;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +20,10 @@ namespace PeopleSearch
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EntityContext, PeopleSearch.DataLayer.Migrations.Configuration>());
+           // Database.SetInitializer(new MyInitialization());
         }
+
     }
 }

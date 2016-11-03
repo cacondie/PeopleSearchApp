@@ -280,6 +280,7 @@ table {
   .table td,
   .table th {
     background-color: #fff !important;
+    vertical-align:middle;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
@@ -294,6 +295,7 @@ table {
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important;
+    vertical-align:middle;
   }
 }
 
@@ -1426,7 +1428,7 @@ th {
 .table tfoot > tr > td {
   padding: 8px;
   line-height: 1.428571429;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: 1px solid #dddddd;
 }
 
