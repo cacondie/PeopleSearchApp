@@ -24,7 +24,7 @@ namespace PeopleSearch.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //WriteSeedFileToLocalDrive();
+            WriteSeedFileToLocalDrive();
             var model = _db.Persons.FindAll()
                                     .Take(10)
                                     .ToList();
