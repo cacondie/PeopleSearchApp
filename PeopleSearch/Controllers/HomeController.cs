@@ -15,29 +15,25 @@ namespace PeopleSearch.Controllers
         public HomeController()
         {
             _db = new UnitOfWork(new EntityContext());
+            
         }
         public HomeController(IUnitOfWork _unit)
         {
             _db = _unit;
         }
         
-        [HttpGet]
-        public ActionResult Index()
-        {
-            WriteSeedFileToLocalDrive();
-            var model = _db.Persons.FindAll()
-                                    .Take(10)
-                                    .ToList();
-            return View(model);
-        }
-
-        [HttpPost]
         public ActionResult Index(string search = null)
         {
-            Thread.Sleep(5000);
+            if (_db is EntityContext)
+            {
+                WriteSeedFileToLocalDrive();
+            }
+            Thread.Sleep(2500);
             var model = _db.Persons
-                .Find(p => search == null || p.LastName.StartsWith(search) || p.FirstName.StartsWith(search))
+                .Find(p => search == null || p.LastName.Contains(search) || p.FirstName.Contains(search) || p.FirstName + " " + p.LastName==search)
                 .Take(25)
+                .OrderBy(p=>p.LastName)
+                .ThenBy(p=>p.FirstName)
                 .ToList();
 
             if (Request.IsAjaxRequest())
@@ -46,6 +42,15 @@ namespace PeopleSearch.Controllers
             }
             return View(model);
         }
+
+        public ActionResult AutoComplete(string term)
+        {
+            var model = _db.Persons.Find(p => p.FirstName.Contains(term) || p.LastName.Contains(term))
+                                    .Take(10)
+                                    .Select(p => new { label = p.FullName });
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

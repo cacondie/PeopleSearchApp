@@ -2,24 +2,14 @@
 @{
     ViewBag.Title = "Home Page";
 }
+    <form method="get" action="@Url.Action("Index")" data-people-ajax="true" data-people-target="#personList">
 
-@using (Ajax.BeginForm(
-                            new AjaxOptions
-                            {
-                                HttpMethod = "post",
-                                InsertionMode = InsertionMode.Replace,
-                                UpdateTargetId = "personList",
-                            }))
-{
-    <div class="form-group">
-        <input type="search" class="form-control-static" name="search" size="50" placeholder="Name Search" />
-        <input type="submit" class="btn btn-primary" value="Search By First Or Last Name" id="submitbtn"/>
-    </div>
-}
+        <input type="search" class="form-control-static" name="search" size="50" placeholder="Name Search" data-people-autocomplete="@Url.Action("AutoComplete")" />
+        <input type="submit" class="btn btn-primary" value="Search By First Or Last Name" id="submitbtn" />
 
+    </form>
 
-
-    @Html.Partial("_Persons", Model)
+@Html.Partial("_Persons", Model)
 
 
 

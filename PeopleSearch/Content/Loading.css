@@ -1,27 +1,18 @@
 ﻿.modal {
-display:    none;
-position:   fixed;
-z-index:    1000;
-top:        0;
-left:       0;
-height:     100%;
-width:      100%;
-background: rgba( 255, 255, 255, .8 ) 
-            url('http://i.stack.imgur.com/FhHRx.gif') 
-            50% 50% 
-            no-repeat;
-opacity: 0.80;
--ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 80);
-filter: alpha(opacity = 80)};
-
-/* When the body has the loading class, we turn
-   the scrollbar off with overflow:hidden */
-body.loading {
-    overflow: hidden;   
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        40%;
+    left:       0;
+    height:     40%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .9 ) 
+                url('http://filamingo.com/image/loading-animation.gif') 
+                50% 50% 
+                no-repeat;
 }
 
-/* Anytime the body has the loading class, our
-   modal element will be visible */
-body.loading .modal {
+.loading .modal {
     display: block;
+    opacity: 1;
 }

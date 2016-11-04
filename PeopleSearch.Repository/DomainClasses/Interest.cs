@@ -17,7 +17,7 @@ namespace PeopleSearch.Repository
         [Column(TypeName = "VARCHAR"), MaxLength(50),Required]
         public string InterestName { get; set; }
 
-        [ForeignKey("PersonId")]
+        [ForeignKey("PersonId"),Index]
         public Person Person { get; set; }
 
         public override string ToString()

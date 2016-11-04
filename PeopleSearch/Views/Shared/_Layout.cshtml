@@ -6,26 +6,14 @@
     <title>@ViewBag.Title - People Search</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/people")
+    
 
 </head>
 <body>
     <div class="navbar">
-        <div class="container">
+        <div class="container loading">
             <div class="navbar-header">
                 <img src="http://thebalsagroup.org/wp-content/uploads/2014/10/logo.png" />
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @*Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                    <li></li>
-                </ul>
             </div>
         </div>
     </div>
@@ -39,6 +27,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/people")
     @RenderSection("scripts", required: false)
+    <div class="modal"><!-- Place at bottom of page --></div>
 </body>
 </html>

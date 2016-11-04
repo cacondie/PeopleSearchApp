@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PeopleSearch;
 using PeopleSearch.Controllers;
 using PeopleSearch.Tests.FakeRepository;
+using PeopleSearch.Repository;
 
 namespace PeopleSearch.Tests.Controllers
 {
@@ -18,13 +19,17 @@ namespace PeopleSearch.Tests.Controllers
         {
             // Arrange
             HomeController controller = new HomeController(new FakeUnitOfWork());
-
+            controller.ControllerContext = new FakeControllerContext();
             // Act
             ViewResult result = controller.Index() as ViewResult;
+            IEnumerable<Person> model = result.Model as IEnumerable<Person>;
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Model);
+            Assert.IsNotNull(model);
+            Assert.IsTrue(model.Count() > 0);
+            
+
         }
     }
 }

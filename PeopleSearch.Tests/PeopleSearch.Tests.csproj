@@ -93,6 +93,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FakeControllerContext.cs" />
+    <Compile Include="Controllers\FakeHttpContext.cs" />
+    <Compile Include="Controllers\FakeHttpRequest.cs" />
     <Compile Include="DomainClassesTests.cs" />
     <Compile Include="FakeRepository\FakeRepository.cs" />
     <Compile Include="FakeRepository\FakeUnitOfWork.cs" />
